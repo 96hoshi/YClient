@@ -159,3 +159,22 @@ class ReverseChronoFollowersPopularity(ContentRecSys):
             "mode": "rchrono_followers_popularity",
             "visibility_rounds": visibility_rounds,
         }
+
+class ReverseChronoComments(ContentRecSys):
+    def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
+        """
+        Reverse chronological most commented content recommendation system.
+
+        :param n_posts: the number of posts to recommend
+        :param visibility_rounds: the number of visibility rounds
+        """
+        super(ReverseChronoComments, self).__init__(
+            n_posts=n_posts, visibility_rounds=visibility_rounds
+        )
+        self.name = "rchrono_comments"
+        self.params = {
+            "limit": 10,
+            "followers_ratio": followers_ratio,
+            "mode": "rchrono_comments",
+            "visibility_rounds": visibility_rounds,
+        }
