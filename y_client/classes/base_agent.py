@@ -1151,10 +1151,10 @@ class Agent(object):
             except:
                 pass
 
-        elif "IMAGE" in text.split():
-            image, article_id = self.select_image(tid=tid)
-            if image is not None:
-                self.comment_image(image, tid=tid, article_id=article_id)
+        # elif "IMAGE" in text.split():
+        #     image, article_id = self.select_image(tid=tid)
+        #     if image is not None:
+        #         self.comment_image(image, tid=tid, article_id=article_id)
 
         return
 

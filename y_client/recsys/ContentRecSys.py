@@ -94,7 +94,7 @@ class ReverseChrono(ContentRecSys):
         )
         self.name = "rchrono"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "mode": "rchrono",
             "visibility_rounds": visibility_rounds,
         }
@@ -113,7 +113,7 @@ class ReverseChronoPopularity(ContentRecSys):
         )
         self.name = "rchrono_popularity"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "mode": "rchrono_popularity",
             "visibility_rounds": visibility_rounds,
         }
@@ -133,7 +133,7 @@ class ReverseChronoFollowers(ContentRecSys):
         )
         self.name = "rchrono_followers"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "followers_ratio": followers_ratio,
             "mode": "rchrono_followers",
             "visibility_rounds": visibility_rounds,
@@ -154,18 +154,19 @@ class ReverseChronoFollowersPopularity(ContentRecSys):
         )
         self.name = "rchrono_followers_popularity"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "followers_ratio": followers_ratio,
             "mode": "rchrono_followers_popularity",
             "visibility_rounds": visibility_rounds,
         }
 
 class ReverseChronoComments(ContentRecSys):
-    def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
+    def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Reverse chronological most commented content recommendation system.
 
         :param n_posts: the number of posts to recommend
+        :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
         super(ReverseChronoComments, self).__init__(
@@ -173,8 +174,48 @@ class ReverseChronoComments(ContentRecSys):
         )
         self.name = "rchrono_comments"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "followers_ratio": followers_ratio,
             "mode": "rchrono_comments",
+            "visibility_rounds": visibility_rounds,
+        }
+
+class CommonInterests(ContentRecSys):
+    def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
+        """
+        Common interests content recommendation system.
+
+        :param n_posts: the number of posts to recommend
+        :param followers_ratio: the ratio posts from followers to recommend
+        :param visibility_rounds: the number of visibility rounds
+        """
+        super(CommonInterests, self).__init__(
+            n_posts=n_posts, visibility_rounds=visibility_rounds
+        )
+        self.name = "common_interests"
+        self.params = {
+            "limit": n_posts,
+            "followers_ratio": followers_ratio,
+            "mode": "common_interests",
+            "visibility_rounds": visibility_rounds,
+        }
+
+class CommonInterests(ContentRecSys):
+    def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
+        """
+        Common interests content recommendation system.
+
+        :param n_posts: the number of posts to recommend
+        :param followers_ratio: the ratio posts from followers to recommend
+        :param visibility_rounds: the number of visibility rounds
+        """
+        super(CommonInterests, self).__init__(
+            n_posts=n_posts, visibility_rounds=visibility_rounds
+        )
+        self.name = "common_interests_popularity"
+        self.params = {
+            "limit": n_posts,
+            "followers_ratio": followers_ratio,
+            "mode": "common_interests_popularity",
             "visibility_rounds": visibility_rounds,
         }

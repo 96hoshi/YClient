@@ -53,7 +53,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-y",
         "--frecsys",
-        default="PreferentialAttachment",
+        default="FollowRecSys",
         help="Name of the follower recsys to be used. Options: ...",
     )
 
