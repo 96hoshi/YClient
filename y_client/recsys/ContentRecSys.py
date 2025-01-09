@@ -200,7 +200,7 @@ class CommonInterests(ContentRecSys):
             "visibility_rounds": visibility_rounds,
         }
 
-class CommonInterests(ContentRecSys):
+class CommonUserInterests(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
         """
         Common interests content recommendation system.
@@ -209,13 +209,13 @@ class CommonInterests(ContentRecSys):
         :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        super(CommonInterests, self).__init__(
+        super(CommonUserInterests, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "common_interests_popularity"
+        self.name = "common_user_interests"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
-            "mode": "common_interests_popularity",
+            "mode": "common_user_interests",
             "visibility_rounds": visibility_rounds,
         }

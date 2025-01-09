@@ -39,6 +39,7 @@ class FollowRecSys(object):
         response = post(f"{api_url}", headers=headers, data=st)
 
         try:
+            return {}
             return response.json()
         except:
             return {}
