@@ -49,6 +49,9 @@ class YClientBase(object):
             "percentage_new_agents_iteration"
         ]
         self.hourly_activity = self.config["simulation"]["hourly_activity"]
+        # double the hourly activity
+        self.hourly_activity.update((k, v * 2) for k, v in self.hourly_activity.items())
+
         self.percentage_removed_agents_iteration = float(
             self.config["simulation"]["percentage_removed_agents_iteration"]
         )

@@ -181,7 +181,7 @@ class ReverseChronoComments(ContentRecSys):
         }
 
 class CommonInterests(ContentRecSys):
-    def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
+    def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Common interests content recommendation system.
 
@@ -201,7 +201,7 @@ class CommonInterests(ContentRecSys):
         }
 
 class CommonUserInterests(ContentRecSys):
-    def __init__(self, n_posts=10, followers_ratio=1, visibility_rounds=36):
+    def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Common interests content recommendation system.
 
