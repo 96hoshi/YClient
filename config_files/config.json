@@ -8,12 +8,12 @@
     "llm_v_api_key": "NULL",
     "llm_v_max_tokens": 300,
     "llm_v_temperature": 0.5,
-    "api": "http://127.0.0.1:5013/"
+    "api": "http://127.0.0.1:5015/"
   },
   "simulation": {
-    "name": "no-follow-500agents-30d-rchrono_comments",
+    "name": "user_base_common_user",
     "client": "YClientWithPages",
-    "days": 28,
+    "days": 5,
     "slots": 24,
     "starting_agents": 500,
     "percentage_new_agents_iteration": 0.00,
@@ -74,8 +74,8 @@
     "llm_agents": ["llama3.2"],
     "llm_v_agent": ["minicpm-v"],
     "n_interests": {
-        "min": 4,
-        "max": 10
+        "min": 2,
+        "max": 5
     },
     "round_actions": {
       "min": 1,

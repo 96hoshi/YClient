@@ -122,9 +122,11 @@ class Agent(object):
             self.age = us["age"]
 
             if us["is_page"] == 0:
-                self.interests = random.randint(config["agents"]["n_interests"]["min"],
-                                                config["agents"]["n_interests"]["max"])
-                self.interests = self.__get_interests(-1)[0]
+                # self.interests = random.randint(config["agents"]["n_interests"]["min"],
+                #                                 config["agents"]["n_interests"]["max"])
+                # self.interests = self.__get_interests(-1)[0]
+                self.interests = config["agents"]["n_interests"]["max"]
+                self.interests = self.__get_initial_interests(-1)[0]
             else:
                 self.interests = []
 
@@ -363,6 +365,35 @@ class Agent(object):
         except:
             return [], []
 
+        return interests, interests_id
+
+    def __get_initial_interests(self, tid):
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+
+        # current round
+        if tid == -1:
+            # get last round id
+            api_url = f"{self.base_url}/current_time"
+            response = get(f"{api_url}", headers=headers)
+            data = json.loads(response.__dict__["_content"].decode("utf-8"))
+            tid = int(data["id"])
+
+        api_url = f"{self.base_url}/get_user_interests"
+
+        data = {
+            "user_id": self.user_id,
+            "round_id": tid,
+            "n_interests": self.interests if isinstance(self.interests, int) else len(self.interests),
+            "time_window": self.attention_window,
+        }
+        response = get(f"{api_url}", headers=headers, data=json.dumps(data))
+        data = json.loads(response.__dict__["_content"].decode("utf-8"))
+        selected = range(len(data))
+        try:
+            interests = [data[i]["topic"] for i in selected]
+            interests_id = [data[i]["id"] for i in selected]
+        except:
+            return [], []
         return interests, interests_id
 
     def post(self, tid):
@@ -1448,7 +1479,8 @@ class Agent(object):
         :return: the dictionary representation
         """
 
-        interests = self.__get_interests(-1)
+        # interests = self.__get_interests(-1)
+        interests = self.__get_initial_interests(-1)
 
         return {
             "name": self.name,
