@@ -219,3 +219,43 @@ class CommonUserInterests(ContentRecSys):
             "mode": "common_user_interests",
             "visibility_rounds": visibility_rounds,
         }
+
+class SimilarUsersReactions(ContentRecSys):
+    def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
+        """
+        Similar users content recommendation system.
+
+        :param n_posts: the number of posts to recommend
+        :param followers_ratio: the ratio posts from followers to recommend
+        :param visibility_rounds: the number of visibility rounds
+        """
+        super(SimilarUsersReactions, self).__init__(
+            n_posts=n_posts, visibility_rounds=visibility_rounds
+        )
+        self.name = "similar_users"
+        self.params = {
+            "limit": n_posts,
+            "followers_ratio": followers_ratio,
+            "mode": "similar_users",
+            "visibility_rounds": visibility_rounds,
+        }
+
+class SimilarUsersPosts(ContentRecSys):
+    def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
+        """
+        Similar users content recommendation system.
+
+        :param n_posts: the number of posts to recommend
+        :param followers_ratio: the ratio posts from followers to recommend
+        :param visibility_rounds: the number of visibility rounds
+        """
+        super(SimilarUsersPosts, self).__init__(
+            n_posts=n_posts, visibility_rounds=visibility_rounds
+        )
+        self.name = "similar_users_posts"
+        self.params = {
+            "limit": n_posts,
+            "followers_ratio": followers_ratio,
+            "mode": "similar_users_posts",
+            "visibility_rounds": visibility_rounds,
+        }
