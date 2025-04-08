@@ -10,7 +10,7 @@ class FollowRecSys(object):
         :param n_neighbors: the number of neighbors to consider
         :param leaning_bias: the leaning bias, 1 for no bias
         """
-        self.name = "random"
+        self.name = "FollowRecSys"
         self.n_neighbors = n_neighbors
         self.params = {
             "mode": "random",
@@ -54,7 +54,7 @@ class CommonNeighbors(FollowRecSys):
         :param leaning_bias: the leaning bias, 1 for no bias
         """
         super().__init__(n_neighbors, leaning_bias)
-        self.name = "common_neighbors"
+        self.name = "CommonNeighbors"
         self.params = {
             "mode": "common_neighbors",
             "n_neighbors": n_neighbors,
@@ -71,7 +71,7 @@ class Jaccard(FollowRecSys):
         :param leaning_bias: the leaning bias, 1 for no bias
         """
         super().__init__(n_neighbors, leaning_bias)
-        self.name = "jaccard"
+        self.name = "Jaccard"
         self.params = {
             "mode": "jaccard",
             "n_neighbors": n_neighbors,
@@ -88,7 +88,7 @@ class AdamicAdar(FollowRecSys):
         :param leaning_bias: the leaning bias, 1 for no bias
         """
         super().__init__(n_neighbors, leaning_bias)
-        self.name = "adamic_adar"
+        self.name = "AdamicAdar"
         self.params = {
             "mode": "adamic_adar",
             "n_neighbors": n_neighbors,
@@ -105,7 +105,7 @@ class PreferentialAttachment(FollowRecSys):
         :param leaning_bias: the leaning bias, 1 for no bias
         """
         super().__init__(n_neighbors, leaning_bias)
-        self.name = "preferential_attachment"
+        self.name = "PreferentialAttachment"
         self.params = {
             "mode": "preferential_attachment",
             "n_neighbors": n_neighbors,

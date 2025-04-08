@@ -8,7 +8,7 @@ class Annotator(object):
     def __init__(self, config):
         self.config_list = [
             {
-                "model": config["model"][0],
+                "model": config["model"],
                 "base_url": config["url"],
                 "timeout": 10000,
                 "api_type": "open_ai",
@@ -22,8 +22,8 @@ class Annotator(object):
             max_consecutive_auto_reply=1,
             llm_config={
                 "config_list": self.config_list,
-                "temperature": config['temperature'],
-                "max_tokens": config['max_tokens'],
+                "temperature": config["temperature"],
+                "max_tokens": config["max_tokens"],
             },
             human_input_mode="NEVER",
         )
@@ -37,9 +37,11 @@ class Annotator(object):
         self.user_proxy.initiate_chat(
             self.image_agent,
             silent=True,
-            message=f"""Describe the image content and, if present, identify the main characters in it. 
+            message=f"""Describe the following image. 
             Write in english. <img {image}>""",
         )
 
         res = self.image_agent.chat_messages[self.user_proxy][-1]["content"][-1]["text"]
+        if "I'm sorry" in res:
+            res = None
         return res

@@ -10,7 +10,7 @@ class ContentRecSys(object):
         :param n_posts: the number of posts to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        self.name = "random"
+        self.name = "ContentRecSys"
         self.params = {
             "limit": n_posts,
             "mode": "default",
@@ -30,6 +30,7 @@ class ContentRecSys(object):
         Read n_posts from the service.
 
         :param base_url: the base url of the service
+        :param user_id: the user id
         :param articles: whether to return articles or not
         :return: the response from the service
         """
@@ -92,7 +93,7 @@ class ReverseChrono(ContentRecSys):
         super(ReverseChrono, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "rchrono"
+        self.name = "ReverseChrono"
         self.params = {
             "limit": n_posts,
             "mode": "rchrono",
@@ -111,7 +112,7 @@ class ReverseChronoPopularity(ContentRecSys):
         super(ReverseChronoPopularity, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "rchrono_popularity"
+        self.name = "ReverseChronoPopularity"
         self.params = {
             "limit": n_posts,
             "mode": "rchrono_popularity",
@@ -131,7 +132,7 @@ class ReverseChronoFollowers(ContentRecSys):
         super(ReverseChronoFollowers, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "rchrono_followers"
+        self.name = "ReverseChronoFollowers"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
@@ -152,13 +153,15 @@ class ReverseChronoFollowersPopularity(ContentRecSys):
         super(ReverseChronoFollowersPopularity, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "rchrono_followers_popularity"
+        self.name = "ReverseChronoFollowersPopularity"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
             "mode": "rchrono_followers_popularity",
             "visibility_rounds": visibility_rounds,
         }
+
+
 
 class ReverseChronoComments(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
@@ -180,6 +183,7 @@ class ReverseChronoComments(ContentRecSys):
             "visibility_rounds": visibility_rounds,
         }
 
+
 class CommonInterests(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
@@ -199,6 +203,7 @@ class CommonInterests(ContentRecSys):
             "mode": "common_interests",
             "visibility_rounds": visibility_rounds,
         }
+
 
 class CommonUserInterests(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
@@ -220,6 +225,7 @@ class CommonUserInterests(ContentRecSys):
             "visibility_rounds": visibility_rounds,
         }
 
+
 class SimilarUsersReactions(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
@@ -240,6 +246,7 @@ class SimilarUsersReactions(ContentRecSys):
             "visibility_rounds": visibility_rounds,
         }
 
+
 class SimilarUsersPosts(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
@@ -259,3 +266,4 @@ class SimilarUsersPosts(ContentRecSys):
             "mode": "similar_users_posts",
             "visibility_rounds": visibility_rounds,
         }
+

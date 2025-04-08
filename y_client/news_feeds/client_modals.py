@@ -4,23 +4,33 @@ import sqlalchemy as db
 import os.path
 import json
 import shutil
+import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# read the experiment configuration (hardcoded config filename is a big issue!)
-config = json.load(open("experiments/current_config.json"))
+try:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-if not os.path.exists(f"experiments/{config['simulation']['name']}.db"):
-    # copy the clean database to the experiments folder
-    shutil.copyfile(
-        f"{BASE_DIR}/../../data_schema/database_clean_client.db",
-        f"{BASE_DIR}/../../experiments/{config['simulation']['name']}.db",
+    # read the experiment configuration (hardcoded config filename is a big issue!)
+    config = json.load(open(f"experiments{os.sep}current_config.json"))
+
+    if not os.path.exists(f"experiments{os.sep}{config['simulation']['name']}.db"):
+        # copy the clean database to the experiments folder
+        shutil.copyfile(
+            f"{BASE_DIR}{os.sep}..{os.sep}..{os.sep}data_schema{os.sep}database_clean_client.db",
+            f"{BASE_DIR}{os.sep}..{os.sep}..{os.sep}experiments{os.sep}{config['simulation']['name']}.db",
+        )
+
+    base = declarative_base()
+    engine = db.create_engine(
+        f"sqlite:///experiments/{config['simulation']['name']}.db",
+        connect_args={"check_same_thread": False},
     )
+    base.metadata.bind = engine
+    session = orm.scoped_session(orm.sessionmaker())(bind=engine)
+except:
+    from y_client.clients.client_web import base, session
 
-base = declarative_base()
-engine = db.create_engine(f"sqlite:///experiments/{config['simulation']['name']}.db")
-base.metadata.bind = engine
-session = orm.scoped_session(orm.sessionmaker())(bind=engine)
+    pass
 
 
 class Articles(base):
@@ -52,3 +62,10 @@ class Images(base):
     description = db.Column(db.String(400), nullable=True)
     article_id = db.Column(db.Integer, db.ForeignKey("articles.id"), nullable=True)
     remote_article_id = db.Column(db.Integer, nullable=True)
+
+
+class Agent_Custom_Prompt(base):
+    __tablename__ = "agent_custom_prompt"
+    id = db.Column(db.Integer, primary_key=True)
+    agent_name = db.Column(db.TEXT, nullable=False)
+    prompt = db.Column(db.TEXT, nullable=False)
