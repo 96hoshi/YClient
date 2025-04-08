@@ -8,16 +8,16 @@
     "llm_v_api_key": "NULL",
     "llm_v_max_tokens": 300,
     "llm_v_temperature": 0.5,
-    "api": "http://127.0.0.1:5010/"
+    "api": "http://127.0.0.1:5015/"
   },
   "simulation": {
-    "name": "simulation",
+    "name": "user_base_common_user",
     "client": "YClientWithPages",
-    "days": 30,
+    "days": 5,
     "slots": 24,
-    "starting_agents": 180,
-    "percentage_new_agents_iteration": 0.07,
-    "percentage_removed_agents_iteration": 0.014,
+    "starting_agents": 500,
+    "percentage_new_agents_iteration": 0.00,
+    "percentage_removed_agents_iteration": 0.00,
     "hourly_activity": {
        "10": 0.021,
        "16": 0.032,
@@ -47,7 +47,7 @@
     "actions_likelihood": {
       "post": 0.2,
       "image": 0.15,
-      "news": 0.8,
+      "news": 0.00,
       "comment": 0.5,
       "read": 0.2,
       "share": 0.8,
@@ -74,8 +74,8 @@
     "llm_agents": ["llama3.2"],
     "llm_v_agent": ["minicpm-v"],
     "n_interests": {
-        "min": 4,
-        "max": 10
+        "min": 2,
+        "max": 5
     },
     "round_actions": {
       "min": 1,
@@ -84,8 +84,11 @@
     "nationalities": ["American"],
     "probability_of_daily_follow": 0.1,
     "interests": [
-      "improbable sports", "bad tv shows", "niche music", "surreal science fiction", "smurfs habits",
-      "books without readers", "silly political facts", "extreme gardening", "travel nightmares", "eccentric hobbies"
+      "baking bread",
+      "unusual pets", 
+      "street photography",
+      "silly political facts",
+      "extreme gardening"
     ],
     "toxicity_levels": ["no", "low", "average"],
     "attention_window": 336,

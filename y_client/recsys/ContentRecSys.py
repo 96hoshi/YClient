@@ -95,7 +95,7 @@ class ReverseChrono(ContentRecSys):
         )
         self.name = "ReverseChrono"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "mode": "rchrono",
             "visibility_rounds": visibility_rounds,
         }
@@ -114,7 +114,7 @@ class ReverseChronoPopularity(ContentRecSys):
         )
         self.name = "ReverseChronoPopularity"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "mode": "rchrono_popularity",
             "visibility_rounds": visibility_rounds,
         }
@@ -134,7 +134,7 @@ class ReverseChronoFollowers(ContentRecSys):
         )
         self.name = "ReverseChronoFollowers"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "followers_ratio": followers_ratio,
             "mode": "rchrono_followers",
             "visibility_rounds": visibility_rounds,
@@ -155,11 +155,12 @@ class ReverseChronoFollowersPopularity(ContentRecSys):
         )
         self.name = "ReverseChronoFollowersPopularity"
         self.params = {
-            "limit": 10,
+            "limit": n_posts,
             "followers_ratio": followers_ratio,
             "mode": "rchrono_followers_popularity",
             "visibility_rounds": visibility_rounds,
         }
+
 
 
 class ReverseChronoComments(ContentRecSys):
@@ -265,3 +266,4 @@ class SimilarUsersPosts(ContentRecSys):
             "mode": "similar_users_posts",
             "visibility_rounds": visibility_rounds,
         }
+

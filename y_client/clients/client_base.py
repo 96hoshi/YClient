@@ -1,4 +1,5 @@
 import random
+import concurrent
 import tqdm
 import sys
 import os
@@ -277,11 +278,11 @@ class YClientBase(object):
 
                 # shuffle agents
                 random.shuffle(sagents)
-                for g in tqdm.tqdm(sagents):
+                
+                ################# PARALLELIZED SECTION #################
+                def agent_task(g):
                     daily_active[g.name] = None
-
                     for _ in range(g.round_actions):
-                        # sample two elements from a list with replacement
                         candidates = random.choices(
                             acts,
                             k=2,
@@ -299,6 +300,13 @@ class YClientBase(object):
                             actions=candidates,
                             max_length_thread_reading=self.max_length_thread_reading,
                         )
+
+                # Run agent tasks in parallel
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    list(tqdm.tqdm(executor.map(agent_task, sagents), total=len(sagents)))
+
+                ################# END OF PARALLELIZATION #################
+
                 # increment slot
                 self.sim_clock.increment_slot()
 
