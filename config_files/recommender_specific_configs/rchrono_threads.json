@@ -8,12 +8,12 @@
     "llm_v_api_key": "NULL",
     "llm_v_max_tokens": 300,
     "llm_v_temperature": 0.5,
-    "api": "http://127.0.0.1:5013/"
+    "api": "http://127.0.0.1:5033/"
   },
   "simulation": {
-    "name": "test_db",
+    "name": "rchrono_threads",
     "client": "YClientWithPages",
-    "days": 1,
+    "days": 60,
     "slots": 24,
     "starting_agents": 0,
     "percentage_new_agents_iteration": 0.02,

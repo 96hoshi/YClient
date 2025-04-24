@@ -195,6 +195,8 @@ class Agent(object):
                 self.toxicity = us["toxicity"]
                 self.nationality = us["nationality"]
                 self.is_page = us["is_page"]
+                self.daily_activity_level = us["daily_activity_level"]
+                # self.profession = us["profession"]
 
             config_list = {
                 "model": f"{self.type}",
@@ -345,6 +347,7 @@ class Agent(object):
                 self.interests = config["agents"]["n_interests"]["max"]
                 self.interests = self.__get_initial_interests(-1)[0]
 
+                # TODO: uncomment later to insert randomized interests
                 #try:
                 #    self.interests = random.randint(
                 #        config["agents"]["n_interests"]["min"],
@@ -1430,6 +1433,7 @@ class Agent(object):
                 )[0]
                 self.follow(tid=tid, target=selected, action="follow")
 
+        # TODO: removed for testing content recommender
         # demanded to page agents
         # elif "NEWS" in text.split():
         #    news, website = self.select_news()
@@ -1449,7 +1453,7 @@ class Agent(object):
                 self.cast(int(selected_post[0]), tid=tid)
             except:
                 pass
-
+        # TODO: removed for testing content recommender, add it back later
         # elif "IMAGE" in text.split():
         #     image, article_id = self.select_image(tid=tid)
         #     if image is not None:
@@ -1742,7 +1746,7 @@ class Agent(object):
             "joined_on": self.joined_on,
             "is_page": self.is_page,
             "daily_activity_level": self.daily_activity_level,
-            "profession": self.profession,
+            # "profession": self.profession,
         }
 
     def __clean_emotion(self, text):

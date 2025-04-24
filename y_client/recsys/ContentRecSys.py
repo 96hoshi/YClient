@@ -163,7 +163,7 @@ class ReverseChronoFollowersPopularity(ContentRecSys):
 
 
 
-class ReverseChronoComments(ContentRecSys):
+class ReverseChronoThreads(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Reverse chronological most commented content recommendation system.
@@ -172,19 +172,19 @@ class ReverseChronoComments(ContentRecSys):
         :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        super(ReverseChronoComments, self).__init__(
+        super(ReverseChronoThreads, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "rchrono_comments"
+        self.name = "rchrono_threads"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
-            "mode": "rchrono_comments",
+            "mode": "rchrono_threads",
             "visibility_rounds": visibility_rounds,
         }
 
 
-class CommonInterests(ContentRecSys):
+class InterestMatchPosts(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Common interests content recommendation system.
@@ -193,19 +193,19 @@ class CommonInterests(ContentRecSys):
         :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        super(CommonInterests, self).__init__(
+        super(InterestMatchPosts, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "common_interests"
+        self.name = "interest_match_posts"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
-            "mode": "common_interests",
+            "mode": "interest_match_posts",
             "visibility_rounds": visibility_rounds,
         }
 
 
-class CommonUserInterests(ContentRecSys):
+class InterestMatchReactions(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Common interests content recommendation system.
@@ -214,19 +214,19 @@ class CommonUserInterests(ContentRecSys):
         :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        super(CommonUserInterests, self).__init__(
+        super(InterestMatchReactions, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "common_user_interests"
+        self.name = "interest_match_reactions"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
-            "mode": "common_user_interests",
+            "mode": "interest_match_reactions",
             "visibility_rounds": visibility_rounds,
         }
 
 
-class SimilarUsersReactions(ContentRecSys):
+class UserSimilarityReactions(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Similar users content recommendation system.
@@ -235,19 +235,19 @@ class SimilarUsersReactions(ContentRecSys):
         :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        super(SimilarUsersReactions, self).__init__(
+        super(UserSimilarityReactions, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "similar_users"
+        self.name = "user_similarity_reactions"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
-            "mode": "similar_users",
+            "mode": "user_similarity_reactions",
             "visibility_rounds": visibility_rounds,
         }
 
 
-class SimilarUsersPosts(ContentRecSys):
+class UserSimilarityPosts(ContentRecSys):
     def __init__(self, n_posts=10, followers_ratio=0.6, visibility_rounds=36):
         """
         Similar users content recommendation system.
@@ -256,14 +256,14 @@ class SimilarUsersPosts(ContentRecSys):
         :param followers_ratio: the ratio posts from followers to recommend
         :param visibility_rounds: the number of visibility rounds
         """
-        super(SimilarUsersPosts, self).__init__(
+        super(UserSimilarityPosts, self).__init__(
             n_posts=n_posts, visibility_rounds=visibility_rounds
         )
-        self.name = "similar_users_posts"
+        self.name = "user_similarity_posts"
         self.params = {
             "limit": n_posts,
             "followers_ratio": followers_ratio,
-            "mode": "similar_users_posts",
+            "mode": "user_similarity_posts",
             "visibility_rounds": visibility_rounds,
         }
 
